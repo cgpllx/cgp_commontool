@@ -10,5 +10,7 @@
     <item name="klistview_header_progressbar" type="id"></item>
     <item name="klistview_header_text" type="id"></item>
     <item name="klistview_header_time" type="id"></item>
+    <item name="pager" type="id"/>
+    <item name="realtabcontent" type="id"/>
 
 </resources>
