@@ -30,21 +30,22 @@ public class ViewFactory {
 		//-----------------------
 		ProgressBar xlistview_footer_progressbar = new ProgressBar(mContext);
 		xlistview_footer_progressbar.setId(R.id.klistview_footer_progressbar);
-		RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+		RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 		layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT);
 		xlistview_footer_progressbar.setLayoutParams(layoutParams);
 		//-------------------------
 		TextView xlistview_footer_hint_textview = new TextView(mContext);
 		xlistview_footer_hint_textview.setId(R.id.klistview_footer_hint_textview);
-		xlistview_footer_hint_textview.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+		RelativeLayout.LayoutParams layoutParams2 =new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+		layoutParams2.addRule(RelativeLayout.CENTER_IN_PARENT);
+		xlistview_footer_hint_textview.setLayoutParams(layoutParams2);
+		xlistview_footer_hint_textview.setGravity(Gravity.CENTER);
 		//xlistview_footer_hint_textview.setText("上拉加载");
 		//-----------------------
 		mLinearLayout.addView(xlistview_footer_content);
 		xlistview_footer_content.addView(xlistview_footer_progressbar);
 		xlistview_footer_content.addView(xlistview_footer_hint_textview);
-
 		return mLinearLayout;
-		
 	}
 
 	public static View getKListview_header(Context mContext,int headerHeaght) {

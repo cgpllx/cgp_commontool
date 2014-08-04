@@ -127,12 +127,15 @@ public class KListView extends ListView implements OnScrollListener {
 		initWithContext(context);
 	}
 
+	private StringHoder stringHoder = null;
+
 	private void initWithContext(Context context) {
 		mScroller = new Scroller(context, new DecelerateInterpolator());
 		// XListView need the scroll event, and it will dispatch the event to
 		// user's listener (as a proxy).
 		super.setOnScrollListener(this);
-		StringHoder stringHoder = new StringHoder(header_hint_normal, header_hint_ready, header_hint_loading, footer_hint_ready, footer_hint_normal, footer_heaght, header_heaght, arrow_pic);
+		stringHoder = new StringHoder(header_hint_normal, header_hint_ready, header_hint_loading, footer_hint_ready, footer_hint_normal,
+				footer_heaght, header_heaght, arrow_pic);
 		// init header view
 		mHeaderView = new KListViewHeader(context, stringHoder);
 		mHeaderViewContent = (RelativeLayout) mHeaderView.findViewById(R.id.klistview_header_content);
@@ -147,18 +150,68 @@ public class KListView extends ListView implements OnScrollListener {
 
 		// init header height
 		mHeaderView.getViewTreeObserver().addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
-			@SuppressWarnings("deprecation")
 			@Override
 			public void onGlobalLayout() {
 				mHeaderViewHeight = mHeaderViewContent.getHeight();
-				getViewTreeObserver().removeGlobalOnLayoutListener(this);
+				getViewTreeObserver().removeOnGlobalLayoutListener(this);
 			}
 		});
 	}
 
+	public void setHeaderHintNormal(String header_hint_normal) {
+		if (stringHoder != null) {
+			stringHoder.header_hint_normal = header_hint_normal;
+		}
+	}
+
+	public void setHeaderHintReady(String header_hint_ready) {
+		if (stringHoder != null) {
+			stringHoder.header_hint_ready = header_hint_ready;
+		}
+	}
+
+	public void setHeaderHintLoading(String header_hint_loading) {
+		if (stringHoder != null) {
+			stringHoder.header_hint_loading = header_hint_loading;
+		}
+		 
+	}
+
+	public void setFooterHintReady(String footer_hint_ready) {
+		if (stringHoder != null) {
+			stringHoder.footer_hint_ready = footer_hint_ready;
+		}
+	}
+
+	public void setFooterHintNormal(String footer_hint_normal) {
+		if (stringHoder != null) {
+			stringHoder.footer_hint_normal = footer_hint_normal;
+		}
+	}
+
+	public void setFooterHeaght(int footer_heaght) {
+		if (stringHoder != null) {
+			stringHoder.footer_heaght = footer_heaght;
+		}
+		mFooterView.invalidate();
+	}
+
+	public void setHeaderHeaght(int header_heaght) {
+		if (stringHoder != null) {
+			stringHoder.header_heaght = header_heaght;
+		}
+		mHeaderView.invalidate();
+	}
+
+	public void setArrowPicResources(int arrow_pic) {
+		if (stringHoder != null) {
+			stringHoder.arrow_pic = arrow_pic;
+		}
+		mHeaderView.invalidate();
+	}
+
 	@Override
 	public void setAdapter(ListAdapter adapter) {
-		// make sure XListViewFooter is the last footer view, and only add once.
 		if (mIsFooterReady == false) {
 			mIsFooterReady = true;
 			addFooterView(mFooterView);

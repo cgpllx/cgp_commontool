@@ -38,4 +38,20 @@
         <attr name="hasStickyHeaders" format="boolean" />
         <attr name="isDrawingListUnderStickyHeader" format="boolean" />
     </declare-styleable>
+    
+         <declare-styleable name="CirclePageIndicator">
+        <attr name="centered" format="boolean" />
+        <attr name="selectedColor" format="color" />
+        <attr name="strokeWidth" format="dimension" />
+        <attr name="unselectedColor" format="color" />
+        <attr name="centered" />
+        <attr name="fillColor" format="color" />
+        <attr name="pageColor" format="color" />
+        <attr name="android:orientation" />
+        <attr name="radius" format="dimension" />
+        <attr name="snap" format="boolean" />
+        <attr name="strokeColor" format="color" />
+        <attr name="strokeWidth" />
+        <attr name="android:background" />
+    </declare-styleable>
 </resources>

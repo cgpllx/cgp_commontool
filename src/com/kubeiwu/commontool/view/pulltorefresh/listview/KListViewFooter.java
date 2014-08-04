@@ -21,13 +21,14 @@ public class KListViewFooter extends LinearLayout {
 	private View mProgressBar;
 	private TextView mHintView;
 	private StringHoder stringHoder;
-	public KListViewFooter(Context context,StringHoder stringHoder) {
+
+	public KListViewFooter(Context context, StringHoder stringHoder) {
 		super(context);
 		this.stringHoder = stringHoder;
 		initView(context);
 	}
 
-	public KListViewFooter(Context context, AttributeSet attrs,StringHoder stringHoder) {
+	public KListViewFooter(Context context, AttributeSet attrs, StringHoder stringHoder) {
 		super(context, attrs);
 		this.stringHoder = stringHoder;
 		initView(context);
@@ -99,8 +100,8 @@ public class KListViewFooter extends LinearLayout {
 
 	private void initView(Context context) {
 		mContext = context;
-		LinearLayout moreView = (LinearLayout) ViewFactory.getKListview_footer(mContext,stringHoder.footer_heaght);
-		//				(LinearLayout)LayoutInflater.from(mContext).inflate(R.layout.klistview_footer, null);
+		LinearLayout moreView = (LinearLayout) ViewFactory.getKListview_footer(mContext, stringHoder.footer_heaght);
+		//(LinearLayout)LayoutInflater.from(mContext).inflate(R.layout.klistview_footer, null);
 
 		addView(moreView);
 		moreView.setLayoutParams(new LinearLayout.LayoutParams(android.view.ViewGroup.LayoutParams.MATCH_PARENT,
@@ -109,5 +110,15 @@ public class KListViewFooter extends LinearLayout {
 		mContentView = moreView.findViewById(R.id.klistview_footer_content);
 		mProgressBar = moreView.findViewById(R.id.klistview_footer_progressbar);
 		mHintView = (TextView) moreView.findViewById(R.id.klistview_footer_hint_textview);
+	}
+
+	@Override
+	public void invalidate() {
+		super.invalidate();
+		setFooterHeaght();
+	}
+
+	private void setFooterHeaght() {
+		mContentView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, stringHoder.footer_heaght));
 	}
 }
