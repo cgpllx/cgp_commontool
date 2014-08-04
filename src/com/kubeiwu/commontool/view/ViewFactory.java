@@ -141,7 +141,6 @@ public class ViewFactory {
 		layoutParams2.addRule(RelativeLayout.CENTER_IN_PARENT);
 		xlistview_footer_hint_textview.setLayoutParams(layoutParams2);
 		xlistview_footer_hint_textview.setGravity(Gravity.CENTER);
-		//xlistview_footer_hint_textview.setText("上拉加载");
 		//-----------------------
 		mLinearLayout.addView(xlistview_footer_content);
 		xlistview_footer_content.addView(xlistview_footer_progressbar);
