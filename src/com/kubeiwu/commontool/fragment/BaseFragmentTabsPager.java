@@ -16,7 +16,14 @@ import com.kubeiwu.commontool.view.ViewFactory;
 
 /**
  * @author 耳东    www.kubeiwu.com
- *
+ * 
+ *  @code   使用方法
+      public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) { 
+ 	  		initTabs(mSimpleHandleTabs, Gravity.TOP); 
+ 	  return super.onCreateView(inflater, container, savedInstanceState);
+    }  
+ *  
+ * 
  */
 public abstract class BaseFragmentTabsPager extends Fragment {
 	private TabHost mTabHost;
@@ -32,9 +39,6 @@ public abstract class BaseFragmentTabsPager extends Fragment {
 	protected void initTabs(HandleTabsPager mHandleTabsPager) {
 		this.mHandleTabsPager = mHandleTabsPager;
 	};
-
-	public BaseFragmentTabsPager() {
-	}
 
 	/**
 	 * @param mHandleTabs

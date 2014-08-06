@@ -9,7 +9,7 @@ import com.kubeiwu.commontool.adapter.TabsPagerAdapter;
  */
 public interface HandleTabsPager extends HandlePublic{
 	/**
-	 * eg:mTabsAdapter.addTab(mTabHost.newTabSpec("名称").setIndicator(getTabItemView(0)), MyDownloadFragment.class, null);
+	 * eg:mTabsAdapter.addTab(mTabHost.newTabSpec("TabSpec").setIndicator(getTabItemView(0)), YourFragment.class, null);
 	 */
 	void addTab(TabsPagerAdapter mTabsAdapter, TabHost mTabHost);
 }

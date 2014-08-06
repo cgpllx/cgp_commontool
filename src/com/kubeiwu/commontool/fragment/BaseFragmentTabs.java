@@ -13,7 +13,14 @@ import com.kubeiwu.commontool.ctrinterface.HandleTabs;
 import com.kubeiwu.commontool.view.ViewFactory;
 /**
  * @author 耳东    www.kubeiwu.com
- *
+ * 
+ *  @code   使用方法
+      public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) { 
+ 	  		initTabs(mSimpleHandleTabs, Gravity.TOP); 
+ 	  return super.onCreateView(inflater, container, savedInstanceState);
+    }  
+ *  
+ * 
  */
 public class BaseFragmentTabs extends Fragment {
 	private FragmentTabHost mTabHost;

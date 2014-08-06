@@ -1,17 +1,14 @@
 package com.kubeiwu.commontool.view.pulltorefresh.listview;
 
 import android.content.Context;
-import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.kubeiwu.commontool.R;
@@ -59,7 +56,6 @@ public class KListViewHeader extends LinearLayout {
 		// 初始情况，设置下拉刷新view高度为0
 		LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(android.view.ViewGroup.LayoutParams.MATCH_PARENT, 0);
 		mContainer = (LinearLayout) ViewFactory.getKListview_header(context, stringHoder.header_heaght);
-		//(LinearLayout) LayoutInflater.from(context).inflate(R.layout.klistview_header, null);
 		addView(mContainer, lp);
 		setGravity(Gravity.BOTTOM);
 
@@ -111,8 +107,6 @@ public class KListViewHeader extends LinearLayout {
 			if (mState == STATE_REFRESHING) {
 				mArrowImageView.clearAnimation();
 			}
-			//			mHintTextView.setText(R.string.xlistview_header_hint_normal);
-			//			mHintTextView.setText("下拉刷新");
 			mHintTextView.setText(stringHoder.header_hint_normal);
 			break;
 		case STATE_READY:
@@ -120,14 +114,10 @@ public class KListViewHeader extends LinearLayout {
 				mArrowImageView.clearAnimation();
 				mArrowImageView.startAnimation(mRotateUpAnim);
 				mHintTextView.setText(stringHoder.header_hint_ready);
-				//				mHintTextView.setText("松开刷新数据");
-				//				mHintTextView.setText(R.string.xlistview_header_hint_ready);
 			}
 			break;
 		case STATE_REFRESHING:
 			mHintTextView.setText(stringHoder.header_hint_loading);
-			//			mHintTextView.setText("正在加载...");
-			//			mHintTextView.setText(R.string.xlistview_header_hint_loading);
 			break;
 		default:
 		}
