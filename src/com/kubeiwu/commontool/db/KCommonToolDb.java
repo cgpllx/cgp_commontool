@@ -16,7 +16,7 @@ import com.kubeiwu.commontool.db.sqlite.SqlBuilder;
 import com.kubeiwu.commontool.db.sqlite.SqlInfo;
 import com.kubeiwu.commontool.db.table.TableInfo;
 import com.kubeiwu.commontool.db.utils.DbUtil;
-
+  
 /**
  * 类名做表名，属性作为字段名称
  * @author  cgpllx1@qq.com (www.kubeiwu.com)
