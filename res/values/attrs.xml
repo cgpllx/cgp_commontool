@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- 下拉刷新 -->
+
     <declare-styleable name="KListView">
         <attr name="header_hint_normal" format="string" />
         <attr name="header_hint_ready" format="string" />
@@ -10,9 +13,11 @@
         <attr name="footer_heaght" format="dimension" />
         <attr name="arrow_pic" format="dimension" />
     </declare-styleable>
-    
-    
-     <declare-styleable name="StickyListHeadersListView">
+
+    <!-- listview固定头部 -->
+
+    <declare-styleable name="StickyListHeadersListView">
+
         <!-- Android attributes -->
         <attr name="android:clipToPadding" />
         <attr name="android:padding" />
@@ -39,7 +44,9 @@
         <attr name="isDrawingListUnderStickyHeader" format="boolean" />
     </declare-styleable>
     
-         <declare-styleable name="CirclePageIndicator">
+    <!-- viewpager指示器 -->
+
+    <declare-styleable name="CirclePageIndicator">
         <attr name="centered" format="boolean" />
         <attr name="selectedColor" format="color" />
         <attr name="strokeWidth" format="dimension" />
@@ -54,4 +61,5 @@
         <attr name="strokeWidth" />
         <attr name="android:background" />
     </declare-styleable>
+
 </resources>
