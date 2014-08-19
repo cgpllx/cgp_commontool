@@ -22,8 +22,13 @@ import android.view.ViewConfiguration;
 import com.kubeiwu.commontool.R;
 
 /**
- *Draws circles (one for each view). The current view position is filled and
- * others are only stroked.
+ * eg :
+ * //mPager = (ViewPager)findViewById(R.id.pager);
+ *  //mPager.setAdapter(mAdapter);
+ * //mIndicator = (CirclePageIndicator)findViewById(R.id.indicator);
+ * //mIndicator.setViewPager(mPager);
+ * @author  cgpllx1@qq.com (www.kubeiwu.com)
+ * @date    2014-8-19
  */
 public class CirclePageIndicator extends View implements PageIndicator {
 	private static final int INVALID_POINTER = -1;
