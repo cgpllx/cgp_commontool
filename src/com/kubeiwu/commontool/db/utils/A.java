@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 public class A {
 	/**
-	 * 主键的id column必须为"_id"字符串，或者使用A.ID
+	 * 主键的id column必须为"_id"字符串，或者使用BaseColumns._ID
 	 * @author  cgpllx1@qq.com (www.kubeiwu.com)
 	 * @date    2014-8-15
 	 */
@@ -31,5 +31,4 @@ public class A {
 		public String name();
 	}
 
-	public static final String ID = "_ID";
 }

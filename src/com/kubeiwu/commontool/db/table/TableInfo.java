@@ -36,7 +36,7 @@ public class TableInfo {
 			tableInfo.setClassName(clazz.getName());
 
 			List<Property> pList = DbUtil.getPropertyList(clazz);
-//			Log.e("pList", pList.size() + "");
+			//Log.e("pList", pList.size() + "");
 			if (pList != null) {
 				for (Property p : pList) {
 					if (p != null)
@@ -53,7 +53,6 @@ public class TableInfo {
 	}
 
 	public String getTableName() {
-
 		return tableName;
 	}
 

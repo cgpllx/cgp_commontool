@@ -10,7 +10,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import com.kubeiwu.commontool.db.sqlite.SqlBuilder;
 import com.kubeiwu.commontool.db.sqlite.SqlInfo;
@@ -23,7 +22,7 @@ import com.kubeiwu.commontool.db.utils.DbUtil;
  * @date    2014-8-15
  */
 public class KCommonToolDb {
-	private static final String TAG = "ktooldb";
+//	private static final String TAG = "ktooldb";
 	//String 库名  MyKToolDb  是对象
 	private static HashMap<String, KCommonToolDb> daoMap = new HashMap<String, KCommonToolDb>();
 	private SQLiteDatabase db;

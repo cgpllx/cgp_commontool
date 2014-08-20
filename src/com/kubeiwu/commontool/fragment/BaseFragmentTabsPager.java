@@ -91,6 +91,7 @@ public abstract class BaseFragmentTabsPager extends BaseFragment {
 		private ArrayList<TabInfo> mTabs = new ArrayList<TabInfo>();
 
 		class TabInfo {
+			@SuppressWarnings("unused")
 			private String tag;
 			private Class<?> clss;
 			private Bundle args;

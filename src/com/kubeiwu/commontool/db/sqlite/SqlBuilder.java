@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import android.provider.BaseColumns;
 import android.text.TextUtils;
 
 import com.kubeiwu.commontool.db.table.KeyValue;
@@ -27,7 +28,7 @@ public class SqlBuilder {
 		strSQL.append("_ID INTEGER PRIMARY KEY,");//主键
 		Collection<Property> propertys = table.propertyMap.values();
 		for (Property property : propertys) {
-			if (!"_ID".equals(property.getColumn().toUpperCase())) {
+			if (!BaseColumns._ID.toUpperCase().equals(property.getColumn().toUpperCase())) {
 				strSQL.append(property.getColumn());
 				strSQL.append(",");
 			}
@@ -84,10 +85,10 @@ public class SqlBuilder {
 
 		//添加属性
 		Collection<Property> propertys = table.propertyMap.values();
-//		Log.e("propertys", propertys.size() + "");
+		//		Log.e("propertys", propertys.size() + "");
 		for (Property property : propertys) {
 			KeyValue kv = property2KeyValue(property, entity);
-//			Log.e("KeyValue", kv + "");
+			//			Log.e("KeyValue", kv + "");
 			if (kv != null)
 				keyValueList.add(kv);
 		}
@@ -99,7 +100,7 @@ public class SqlBuilder {
 		KeyValue kv = null;
 		String pcolumn = property.getColumn();
 		Object value = property.getValue(entity);
-//		Log.e("value", value + "");
+		//		Log.e("value", value + "");
 		if (value != null) {
 			kv = new KeyValue(pcolumn, value);
 		} else {
@@ -141,7 +142,7 @@ public class SqlBuilder {
 			throw new IllegalArgumentException("getDeleteSQL:idValue is null");
 		}
 		StringBuffer strSQL = new StringBuffer(getDeleteSqlBytableName(table.getTableName()));
-		strSQL.append(" WHERE ").append("_id").append("=?");
+		strSQL.append(" WHERE ").append(BaseColumns._ID).append("=?");
 
 		SqlInfo sqlInfo = new SqlInfo();
 		sqlInfo.setSql(strSQL.toString());
@@ -170,7 +171,7 @@ public class SqlBuilder {
 	public static SqlInfo getUpdateSqlAsSqlInfo(Object entity) {
 
 		TableInfo table = TableInfo.get(entity.getClass());
-		Object idvalue = table.propertyMap.get("_ID");
+		Object idvalue = table.propertyMap.get(BaseColumns._ID);
 		if (idvalue == null)//主键值不能为null，否则不能更新
 			throw new IllegalArgumentException("this entity[" + entity.getClass() + "]'s id value is null");
 
@@ -193,7 +194,7 @@ public class SqlBuilder {
 			sqlInfo.addValue(kv.getValue());
 		}
 		strSQL.deleteCharAt(strSQL.length() - 1);
-		strSQL.append(" WHERE ").append("_ID=?");
+		strSQL.append(" WHERE ").append(BaseColumns._ID+"=?");
 		sqlInfo.addValue(idvalue);
 		sqlInfo.setSql(strSQL.toString());
 		return sqlInfo;

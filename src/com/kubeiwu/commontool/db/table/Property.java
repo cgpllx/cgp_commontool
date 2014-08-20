@@ -4,8 +4,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Date;
 
-import android.util.Log;
-
 import com.kubeiwu.commontool.db.utils.DbUtil;
 
 public class Property {
@@ -67,8 +65,6 @@ public class Property {
 	}
 
 	public void setValue(Object receiver, Object value) {
-//		Log.e("set",set+"");
-//		Log.e("value",value+"");
 		if (set != null && value != null) {
 			try {
 				if (dataType == String.class) {
