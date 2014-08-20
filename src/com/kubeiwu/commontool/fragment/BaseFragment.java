@@ -14,7 +14,7 @@ public class BaseFragment extends Fragment {
 	public interface HandlePublic {
 		/**
 		 * 设置Widget背景
-		 * @param widgetview
+		 * @param widgetview  
 		 */
 		void setTabWidgetBackground(TabWidget widgetview);
 
