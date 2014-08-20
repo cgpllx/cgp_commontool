@@ -1,7 +1,6 @@
 package com.kubeiwu.commontool.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -11,7 +10,6 @@ import android.widget.TabHost;
 
 import com.kubeiwu.commontool.R;
 import com.kubeiwu.commontool.adapter.TabsPagerAdapter;
-import com.kubeiwu.commontool.ctrinterface.HandleTabsPager;
 import com.kubeiwu.commontool.view.ViewFactory;
 
 /**
@@ -25,7 +23,7 @@ import com.kubeiwu.commontool.view.ViewFactory;
  *  
  * 
  */
-public abstract class BaseFragmentTabsPager extends Fragment {
+public abstract class BaseFragmentTabsPager extends BaseFragment {
 	private TabHost mTabHost;
 	private ViewPager mViewPager;
 	private TabsPagerAdapter mTabsAdapter;
@@ -64,5 +62,14 @@ public abstract class BaseFragmentTabsPager extends Fragment {
 		}
 		return mTabHost;
 	}
-
+	/**
+	 * @author 耳东    www.kubeiwu.com
+	 *
+	 */
+	public interface HandleTabsPager extends HandlePublic{
+		/**
+		 * eg:mTabsAdapter.addTab(mTabHost.newTabSpec("TabSpec").setIndicator(getTabItemView(0)), YourFragment.class, null);
+		 */
+		void addTab(TabsPagerAdapter mTabsAdapter, TabHost mTabHost);
+	}
 }

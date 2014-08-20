@@ -3,7 +3,7 @@ package com.kubeiwu.commontool.core;
 import android.view.View;
 import android.widget.TabWidget;
 
-import com.kubeiwu.commontool.ctrinterface.HandleTabs;
+import com.kubeiwu.commontool.fragment.BaseFragmentTabs.HandleTabs;
 /**
  * @author 耳东    www.kubeiwu.com
  *

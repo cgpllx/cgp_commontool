@@ -1,7 +1,6 @@
 package com.kubeiwu.commontool.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTabHost;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -9,27 +8,25 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.kubeiwu.commontool.R;
-import com.kubeiwu.commontool.ctrinterface.HandleTabs;
 import com.kubeiwu.commontool.view.ViewFactory;
+
 /**
  * @author 耳东    www.kubeiwu.com
  * 
  *  @code   使用方法
-      public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) { 
- 	  		initTabs(mSimpleHandleTabs, Gravity.TOP); 
- 	  return super.onCreateView(inflater, container, savedInstanceState);
-    }  
+  *    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) { 
+ *	  		initTabs(mSimpleHandleTabs, Gravity.TOP); 
+ *	  return super.onCreateView(inflater, container, savedInstanceState);
+  *  }  
  *  
- * 
  */
-public class BaseFragmentTabs extends Fragment {
+public class BaseFragmentTabs extends BaseFragment {
 	private FragmentTabHost mTabHost;
 	private HandleTabs mHandleTabs;
 	private int gravity = Gravity.BOTTOM;
-
 	protected void initTabs(HandleTabs mHandleTabs) {
 		this.mHandleTabs = mHandleTabs;
-	} 
+	}
 
 	/**
 	 * @param mHandleTabs
@@ -55,4 +52,14 @@ public class BaseFragmentTabs extends Fragment {
 		return mTabHost;
 	}
 
+	/**
+	 * @author 耳东    www.kubeiwu.com
+	 *
+	 */
+	public interface HandleTabs extends HandlePublic {
+		/**
+		 * eg:mTabHost.addTab(mTabHost.newTabSpec("simple").setIndicator(getTabItemView(0)), IndexFragment.class, null);
+		 */
+		void addTab(FragmentTabHost mFragmentTabHost);
+	}
 }
