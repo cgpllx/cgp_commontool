@@ -9,7 +9,7 @@ public class KeyValue {
 	public KeyValue(String key, Object value) {
 		this.key = key;
 		this.value = value;
-	}
+	}  
 
 	public KeyValue() {
 	}
