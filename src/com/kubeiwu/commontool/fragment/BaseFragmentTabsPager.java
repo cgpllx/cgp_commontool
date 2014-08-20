@@ -84,7 +84,7 @@ public abstract class BaseFragmentTabsPager extends BaseFragment {
 	 * @author 耳东    www.kubeiwu.com
 	 *
 	 */
-	class TabsPagerAdapter extends FragmentPagerAdapter implements TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener {
+	public class TabsPagerAdapter extends FragmentPagerAdapter implements TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener {
 		private Context mContext;
 		private TabHost mTabHost;
 		private ViewPager mViewPager;
