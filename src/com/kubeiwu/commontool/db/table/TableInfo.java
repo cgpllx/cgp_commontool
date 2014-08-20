@@ -3,8 +3,6 @@ package com.kubeiwu.commontool.db.table;
 import java.util.HashMap;
 import java.util.List;
 
-import android.util.Log;
-
 import com.kubeiwu.commontool.db.utils.DbUtil;
 
 /**
