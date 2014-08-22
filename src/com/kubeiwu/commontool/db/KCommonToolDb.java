@@ -10,24 +10,25 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.kubeiwu.commontool.db.sqlite.SqlBuilder;
 import com.kubeiwu.commontool.db.sqlite.SqlInfo;
 import com.kubeiwu.commontool.db.table.TableInfo;
 import com.kubeiwu.commontool.db.utils.DbUtil;
-  
+
 /**
  * 类名做表名，属性作为字段名称
  * @author  cgpllx1@qq.com (www.kubeiwu.com)
  * @date    2014-8-15
  */
 public class KCommonToolDb {
-//	private static final String TAG = "ktooldb";
+	private static final String TAG = "KCommonToolDb";
 	//String 库名  MyKToolDb  是对象
 	private static HashMap<String, KCommonToolDb> daoMap = new HashMap<String, KCommonToolDb>();
 	private SQLiteDatabase db;
 
-	//	private DaoConfig config;
+	//private DaoConfig config;
 
 	private KCommonToolDb(DaoConfig config) {
 		if (config == null)
@@ -40,7 +41,7 @@ public class KCommonToolDb {
 			this.db = new SqliteDbHelper(config.getContext().getApplicationContext(), config.getDbName(), config.getDbVersion())
 					.getWritableDatabase();
 		}
-		//		this.config = config;
+		//this.config = config;
 	}
 
 	public static KCommonToolDb create(DaoConfig config) {
@@ -106,14 +107,13 @@ public class KCommonToolDb {
 		if (sqlInfo != null) {
 			db.execSQL(sqlInfo.getSql(), sqlInfo.getBindArgsAsArray());
 		} else {
-//			Log.e(TAG, "sava error:sqlInfo is null");
+			Log.e(TAG, "sava error:sqlInfo is null");
 		}
 	}
 
 	private void checkTableExist(Class<?> clazz) {
 		if (!tableIsExist(TableInfo.get(clazz))) {
 			String sql = SqlBuilder.getCreatTableSQL(clazz);
-//			Log.e("sql=", sql);
 			db.execSQL(sql);
 		}
 	}
@@ -157,13 +157,17 @@ public class KCommonToolDb {
 	/**
 	 * 根据条件查询
 	 * @param clazz
-	 * @param strWhere
-	 * @param orderBy
+	 * @param strWhere  eg "_id=1"
+	 * @param orderBy  eg  "_id"
 	 * @return
 	 */
 	public <T> List<T> findAllByWhere(Class<T> clazz, String strWhere, String orderBy) {
 		checkTableExist(clazz);
-		return findAllBySql(clazz, SqlBuilder.getSelectSQLByWhere(clazz, strWhere) + " ORDER BY " + orderBy);
+		return findAllBySql(clazz, SqlBuilder.getSelectSQLByWhereAndOrderBy(clazz, strWhere, orderBy));
+	}
+
+	public <T> List<T> findAllByWhere(Class<T> clazz, String strWhere) {
+		return findAllByWhere(clazz, strWhere, null);
 	}
 
 	private boolean tableIsExist(TableInfo table) {
@@ -181,7 +185,6 @@ public class KCommonToolDb {
 					return true;
 				}
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -189,7 +192,6 @@ public class KCommonToolDb {
 				cursor.close();
 			cursor = null;
 		}
-
 		return false;
 	}
 
@@ -229,6 +231,7 @@ public class KCommonToolDb {
 
 		return null;
 	}
+
 	/**
 	 * 更新数据 （主键ID必须不能为空）
 	 * 
@@ -238,15 +241,14 @@ public class KCommonToolDb {
 		checkTableExist(entity.getClass());
 		exeSqlInfo(SqlBuilder.getUpdateSqlAsSqlInfo(entity));
 	}
+
 	/**
 	 * 删除表的所有数据
 	 * 
 	 * @param clazz
 	 */
 	public void deleteAll(Class<?> clazz) {
-		checkTableExist(clazz);
-		String sql = SqlBuilder.buildDeleteSql(clazz, null);
-		db.execSQL(sql);
+		deleteByWhere(clazz, null);
 	}
 
 	/**
@@ -270,6 +272,7 @@ public class KCommonToolDb {
 
 		@Override
 		public void onCreate(SQLiteDatabase db) {
+			
 		}
 
 		@Override
@@ -294,32 +297,36 @@ public class KCommonToolDb {
 			return targetDirectory;
 		}
 
-		public void setTargetDirectory(String targetDirectory) {
+		public DaoConfig setTargetDirectory(String targetDirectory) {
 			this.targetDirectory = targetDirectory;
+			return this;
 		}
 
 		public Context getContext() {
 			return mContext;
 		}
 
-		public void setContext(Context context) {
+		public DaoConfig setContext(Context context) {
 			this.mContext = context;
+			return this;
 		}
 
 		public String getDbName() {
 			return mDbName;
 		}
 
-		public void setDbName(String dbName) {
+		public DaoConfig setDbName(String dbName) {
 			this.mDbName = dbName;
+			return this;
 		}
 
 		public int getDbVersion() {
 			return dbVersion;
 		}
 
-		public void setDbVersion(int dbVersion) {
+		public DaoConfig setDbVersion(int dbVersion) {
 			this.dbVersion = dbVersion;
+			return this;
 		}
 	}
 }

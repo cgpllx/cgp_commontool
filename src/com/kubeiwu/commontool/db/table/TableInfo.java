@@ -11,9 +11,9 @@ import com.kubeiwu.commontool.db.utils.DbUtil;
  */
 public class TableInfo {
 	private boolean checkDatabese;//在对实体进行数据库操作的时候查询是否已经有表了，只需查询一遍，用此标示
-	private String className;
+	private String className;//对象名称，
 
-	private String tableName;//表名
+	private String tableName;//表名，没有注解表名时，就用className当表名用
 	public final HashMap<String, Property> propertyMap = new HashMap<String, Property>();//String 健名称
 
 	public boolean isCheckDatabese() {
@@ -34,9 +34,7 @@ public class TableInfo {
 			tableInfo = new TableInfo();
 			tableInfo.setTableName(DbUtil.getTableName(clazz));
 			tableInfo.setClassName(clazz.getName());
-
 			List<Property> pList = DbUtil.getPropertyList(clazz);
-			//Log.e("pList", pList.size() + "");
 			if (pList != null) {
 				for (Property p : pList) {
 					if (p != null)

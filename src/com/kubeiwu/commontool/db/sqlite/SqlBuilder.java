@@ -110,13 +110,16 @@ public class SqlBuilder {
 		return kv;
 	}
 
-	public static String getSelectSQLByWhere(Class<?> clazz, String strWhere) {
+	public static String getSelectSQLByWhereAndOrderBy(Class<?> clazz, String strWhere, String orderBy) {
 		TableInfo table = TableInfo.get(clazz);
 
 		StringBuffer strSQL = new StringBuffer(getSelectSqlByTableName(table.getTableName()));
 
 		if (!TextUtils.isEmpty(strWhere)) {
 			strSQL.append(" WHERE ").append(strWhere);
+		}
+		if (!TextUtils.isEmpty(orderBy)) {
+			strSQL.append(" ORDER BY ").append(orderBy);
 		}
 
 		return strSQL.toString();
@@ -162,8 +165,7 @@ public class SqlBuilder {
 		StringBuffer strSQL = new StringBuffer(getDeleteSqlBytableName(table.getTableName()));
 
 		if (!TextUtils.isEmpty(strWhere)) {
-			strSQL.append(" WHERE ");
-			strSQL.append(strWhere);
+			strSQL.append(" WHERE ").append(strWhere);
 		}
 		return strSQL.toString();
 	}//////////////////////////////update sql start/////////////////////////////////////////////
@@ -194,7 +196,7 @@ public class SqlBuilder {
 			sqlInfo.addValue(kv.getValue());
 		}
 		strSQL.deleteCharAt(strSQL.length() - 1);
-		strSQL.append(" WHERE ").append(BaseColumns._ID+"=?");
+		strSQL.append(" WHERE ").append(BaseColumns._ID + "=?");
 		sqlInfo.addValue(idvalue);
 		sqlInfo.setSql(strSQL.toString());
 		return sqlInfo;
