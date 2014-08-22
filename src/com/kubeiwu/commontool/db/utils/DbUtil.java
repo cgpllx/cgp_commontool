@@ -196,4 +196,12 @@ public class DbUtil {
 		}
 		return field.getName();
 	}
+	public static ArrayList<String> stringToArrayList(String value){
+		String[] array= value.replace("[", "").replace("]", "").split(",");
+		ArrayList<String> list = new ArrayList<String>();
+		for (String item : array) {
+			list.add(item);
+		}
+		return list;
+	}
 }
