@@ -28,7 +28,7 @@ public interface PageIndicator extends ViewPager.OnPageChangeListener {
      * Bind the indicator to a ViewPager.
      *
      * @param view
-     */
+     */   
     void setViewPager(ViewPager view);
 
     /**
