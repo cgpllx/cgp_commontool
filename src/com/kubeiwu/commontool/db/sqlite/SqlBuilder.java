@@ -24,8 +24,8 @@ public class SqlBuilder {
 		strSQL.append("CREATE TABLE IF NOT EXISTS ");
 		strSQL.append(table.getTableName());
 		strSQL.append(" ( ");
-
-		strSQL.append("_ID INTEGER PRIMARY KEY,");//主键
+		strSQL.append(BaseColumns._ID);//主键
+		strSQL.append(" INTEGER PRIMARY KEY AUTOINCREMENT,");
 		Collection<Property> propertys = table.propertyMap.values();
 		for (Property property : propertys) {
 			if (!BaseColumns._ID.toUpperCase().equals(property.getColumn().toUpperCase())) {

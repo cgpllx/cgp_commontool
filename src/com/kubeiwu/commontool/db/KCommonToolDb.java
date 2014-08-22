@@ -85,6 +85,10 @@ public class KCommonToolDb {
 	public <T> void insertOrReplaceAll(List<T> entitys) {
 		insertWithOnConflict(entitys, CONFLICT_REPLACE);
 	}
+	public <T> void insertOrReplace(T entity) {
+		checkTableExist(entity.getClass());
+		exeSqlInfo(SqlBuilder.buildInsertSql(entity, CONFLICT_REPLACE));
+	}
 
 	private <T> void insertWithOnConflict(List<T> entitys, int conflictAlgorithm) {
 		if (DbUtil.isEmpty(entitys))

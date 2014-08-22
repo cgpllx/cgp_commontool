@@ -2,6 +2,7 @@ package com.kubeiwu.commontool.db.table;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Date;
 
 import com.kubeiwu.commontool.db.utils.DbUtil;
@@ -64,7 +65,12 @@ public class Property {
 		return null;
 	}
 
-	public void setValue(Object receiver, Object value) {
+	/**
+	 * 解析为对象的属性类型
+	 * @param receiver
+	 * @param value
+	 */
+	public void setValue(Object receiver, String value) {
 		if (set != null && value != null) {
 			try {
 				if (dataType == String.class) {
@@ -81,6 +87,8 @@ public class Property {
 					set.invoke(receiver, value == null ? (Date) null : DbUtil.stringToDateTime(value.toString()));
 				} else if (dataType == boolean.class || dataType == Boolean.class) {
 					set.invoke(receiver, value == null ? (Boolean) null : "1".equals(value.toString()));
+				} else if (dataType == ArrayList.class) {
+					set.invoke(receiver, DbUtil.stringToArrayList(value));
 				} else {
 					set.invoke(receiver, value);
 				}

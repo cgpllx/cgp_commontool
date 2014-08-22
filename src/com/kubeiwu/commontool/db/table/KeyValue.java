@@ -1,5 +1,7 @@
 package com.kubeiwu.commontool.db.table;
 
+import java.util.ArrayList;
+
 import com.kubeiwu.commontool.db.utils.DbUtil;
 
 public class KeyValue {
@@ -9,7 +11,7 @@ public class KeyValue {
 	public KeyValue(String key, Object value) {
 		this.key = key;
 		this.value = value;
-	}  
+	}
 
 	public KeyValue() {
 	}
@@ -25,7 +27,10 @@ public class KeyValue {
 	public Object getValue() {
 		if (value instanceof java.util.Date || value instanceof java.sql.Date) {
 			return DbUtil.SDF.format(value);
+		} else if (value instanceof ArrayList) {
+			return value.toString();
 		}
+
 		return value;
 	}
 
