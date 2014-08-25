@@ -12,7 +12,7 @@ public class KApplication extends Application {
 
 	@Override
 	public void onCreate() {
-		super.onCreate();
+		super.onCreate();   
 		init(getApplicationContext());
 		initImageLoder(getApplicationContext());
 	}
