@@ -21,7 +21,7 @@ import com.kubeiwu.commontool.db.utils.DbUtil;
  * 类名做表名，属性作为字段名称
  * @author  cgpllx1@qq.com (www.kubeiwu.com)
  * @date    2014-8-15
- */
+ */  
 public class KCommonToolDb {
 	private static final String TAG = "KCommonToolDb";
 	//String 库名  MyKToolDb  是对象
