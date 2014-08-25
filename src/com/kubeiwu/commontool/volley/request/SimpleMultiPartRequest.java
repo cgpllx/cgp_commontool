@@ -25,7 +25,7 @@ public class SimpleMultiPartRequest extends MultiPartRequest<String> {
 	public SimpleMultiPartRequest(String url, MultipartRequestParams params) {
 		this(Method.POST, url, null, params, null, null);
 	}
-  
+     
 	public SimpleMultiPartRequest(String url, MultipartRequestParams params, ErrorListener errorListener, Listener<String> listene) {
 		this(Method.POST, url, null, params, errorListener, listene);
 	}
