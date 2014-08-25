@@ -25,7 +25,7 @@ public class KGsonArrayRequest<T> extends KRequest<List<T>> {
 	public KGsonArrayRequest(int method, String url, Map<String, String> headers, Map<String, String> params, Listener<List<T>> listener,
 			ErrorListener errorListener) {
 		super(method, url, headers, params, listener, errorListener);
-	}    
+	}      
 
 	@Override
 	protected Response<List<T>> parseNetworkResponse(NetworkResponse response) {
